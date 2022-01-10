@@ -2,6 +2,9 @@
 
 Alacarte is a tool to help the Chef Support team create representative test environments
 
+## Confluence
+
+Please review the confluence at https://chefio.atlassian.net/wiki/spaces/SUP/pages/2532639141/Chef+a+la+carte
 
 ## Installation
 
