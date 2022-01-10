@@ -2,6 +2,7 @@
 
 
 require 'toml'
+require 'thor'
 
 
 module Alacarte
@@ -184,7 +185,7 @@ module Alacarte
                 puts " - If you need to test load, please review the load test tool"
                 puts " - Are you sure you want to contine with #{node_count} nodes? (y/n)"
 
-                response = gets.chomp
+                response = self.ask("Yes/No: ")
 
                 if response.downcase.include?"y"
                     return true
@@ -311,7 +312,20 @@ module Alacarte
 
         end
 
+        def self.shell
+            @shell ||= Thor::Shell::Basic.new
+        end
+
+        def self.ask(question)
+            
+            self.shell.ask(question)
+
+
+        end
+        
         def self.takeorder()
+
+           
 
             order_data = Hash.new
             
@@ -319,7 +333,9 @@ module Alacarte
 
             puts self.menu_question
 
-            order_data["menu_item"] = gets.chomp
+            order_data["menu_item"] = self.ask("Menu item number:")
+
+            puts order_data["menu_item"]
 
             while (order_data["menu_item"].downcase.include?"m") or !(self.menu_item_valid).include?(order_data["menu_item"])
 
@@ -327,7 +343,7 @@ module Alacarte
 
                 order_data["menu_item"] = puts self.menu_question
 
-                order_data["menu_item"] = gets.chomp.downcase
+                order_data["menu_item"] = self.ask("Menu item number:")
 
                 if order_data["menu_item"] == ""
                     order_data["menu_item"] = "1"
@@ -339,7 +355,7 @@ module Alacarte
                 
                 puts self.server_type_question
 
-                order_data["server_type"] = gets.chomp
+                order_data["server_type"] = self.ask("Server type:")
 
                 if order_data["server_type"] == ""
                     order_data["server_type"] = "Centos"
@@ -351,7 +367,7 @@ module Alacarte
                 
                 puts self.server_version_question(order_data["server_type"])
 
-                order_data["server_version"] = gets.chomp
+                order_data["server_version"] = self.ask("Server version: ")
 
                 if order_data["server_version"] == "" and (order_data["server_type"] == "RHEL" or order_data["server_type"] == "Centos")
                     order_data["server_version"] = "8"
@@ -366,7 +382,7 @@ module Alacarte
                 
                 puts self.automate_version_question
 
-                order_data["automate_version"] = gets.chomp.downcase
+                order_data["automate_version"] = self.ask("Automate version:")
                 
                 if order_data["automate_version"] == ""
                     order_data["automate_version"] = "Latest"
@@ -379,7 +395,7 @@ module Alacarte
                 
                 puts self.infra_server_version_question
 
-                order_data["infra_server_version"] = gets.chomp.downcase
+                order_data["infra_server_version"] = self.ask("Infra server version:")
                 
                 if order_data["infra_server_version"] == ""
                     order_data["infra_server_version"] = "Latest"
@@ -393,7 +409,7 @@ module Alacarte
                 
                 puts self.node_count_question
 
-                order_data["node_count"] = gets.chomp.downcase
+                order_data["node_count"] = self.ask("Number of nodes:")
 
                 if order_data["node_count"] == ""
                     order_data["node_count"] = "0"
@@ -406,7 +422,7 @@ module Alacarte
                 
                 puts self.node_version_question
 
-                order_data["node_version"] = gets.chomp.downcase
+                order_data["node_version"] = self.ask("Node infra version:")
 
                 if order_data["node_version"] == ""
                     order_data["node_version"] = "Latest"
@@ -418,7 +434,7 @@ module Alacarte
                 
                 puts self.habitat_required_question
 
-                order_data["habitat_required"] = gets.chomp.downcase
+                order_data["habitat_required"] = self.ask("Habitat, yes or no:")
 
                 if order_data["habitat_required"] == ""
                     order_data["habitat_required"] = "no"
@@ -431,7 +447,7 @@ module Alacarte
                 
                     puts self.habitat_version_question
     
-                    order_data["habitat_version"] = gets.chomp.downcase
+                    order_data["habitat_version"] = self.ask("Which Habitat version:")
 
                     if order_data["habitat_version"] == ""
                         order_data["habitat_version"] = "Latest"

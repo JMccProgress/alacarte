@@ -1,25 +1,25 @@
 
 [order]
-menu_config_type = "Basic Infra and Automate"
-menu_order_num = "1"
+menu_config_type = "Infra FE and BE with Automate"
+menu_order_num = "3"
 
 [order.automate]
-server = "Centos/8"
+server = "Ubuntu/18.04"
 version = "Latest"
 
 [order.habitat]
 required = "no"
-server = "Centos/8"
+server = "Ubuntu/18.04"
 
 [order.infa_server]
-server = "Centos/8"
+server = "Ubuntu/18.04"
 version = "Latest"
 
 [order.nodes]
-count = "0"
-server = "Centos/8"
+count = "2"
+server = "Ubuntu/18.04"
 version = "Latest"
 
 [order.server]
-type = "Centos"
-version = "8"
+type = "Ubuntu"
+version = "18.04"
