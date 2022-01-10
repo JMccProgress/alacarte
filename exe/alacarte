@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'alacarte/cli'
+Alacarte::CLI.start

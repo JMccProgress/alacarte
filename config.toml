@@ -1,0 +1,25 @@
+
+[order]
+menu_config_type = "Basic Infra and Automate"
+menu_order_num = "1"
+
+[order.automate]
+server = "Centos/8"
+version = "Latest"
+
+[order.habitat]
+required = "no"
+server = "Centos/8"
+
+[order.infa_server]
+server = "Centos/8"
+version = "Latest"
+
+[order.nodes]
+count = "0"
+server = "Centos/8"
+version = "Latest"
+
+[order.server]
+type = "Centos"
+version = "8"
