@@ -320,12 +320,9 @@ module Alacarte
             
             self.shell.ask(question)
 
-
         end
         
-        def self.takeorder()
-
-           
+        def self.take_order()
 
             order_data = Hash.new
             
@@ -362,12 +359,11 @@ module Alacarte
                 end
             end
 
-
             while !(self.server_version_valid(order_data["server_type"])).include?(order_data["server_version"])
                 
                 puts self.server_version_question(order_data["server_type"])
 
-                order_data["server_version"] = self.ask("Server version: ")
+                order_data["server_version"] = self.ask("Server version:")
 
                 if order_data["server_version"] == "" and (order_data["server_type"] == "RHEL" or order_data["server_type"] == "Centos")
                     order_data["server_version"] = "8"
@@ -376,7 +372,6 @@ module Alacarte
                 end
 
             end
-
 
             while !(self.automate_version_valid(order_data["automate_version"]))
                 
@@ -404,7 +399,6 @@ module Alacarte
 
             end
             
-            
             while !(self.node_count_valid(order_data["node_count"]))
                 
                 puts self.node_count_question
@@ -414,7 +408,6 @@ module Alacarte
                 if order_data["node_count"] == ""
                     order_data["node_count"] = "0"
                 end
-
 
             end
 
