@@ -1,6 +1,10 @@
 # Alacarte
 
-Alacarte is a tool to help the Chef Support team create representative test environments
+Alacarte is a tool to help the Chef Support team create representative customer environments for testing purposes only.
+
+If your looking to test cookbooks, then instead of this, [test kitchen](https://kitchen.ci/) is your best bet
+
+Alacarte is not a tool for production use
 
 ## Confluence
 
